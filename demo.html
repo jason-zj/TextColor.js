@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TextColor.JS</title>
+	<style>
+	* {margin:0; padding:0;}
+	body {background: #CCC;}
+	::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
+	::selection { background:#FF5E99; color:#fff; text-shadow: none; } 
+	.wrapper {
+		width: 710px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		background: #FFFFFF;
+		padding: 50px;
+	}
+	.code {
+		background: #f8f8f8;
+		border: 1px solid #ccc;
+		margin-bottom: 2em;
+		padding: 10px;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1>TextColor.js</h1>
+			<p>一个轻量级的JavaScript插件，可以通过这个插件对字母、单词或句子进行染色，无需依赖jQuery。</p>
+		</header>
+		<article>
+        	<br>
+			<h3>1、基本使用</h3>
+			<h4>HTML</h4>
+			<div class="code">
+				&lt;div id="demo1"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;TextColor&lt;/h1&gt;<br>
+				&lt;/div&gt;
+			</div>
+			<h4>JavaScript</h4>
+			<div class="code">
+				TextColor.listen({seletor:"#demo1"});
+			</div>
+			<p>提供3个参数：<br>
+            	1.seletor：选择器<br>
+                2.splitter：分割方式，3个参数，"char","word","line".默认为"char".<br>
+                3.attr:是否添加属性。默认为false。
+			</p>
+            <br>
+			<h4>Result</h4>
+			<div class="code">
+				<h1 id="demo1">TextColor</h1>
+			</div>
+
+			<h3>2、分割单词</h3>
+			<h4>HTML</h4>
+			<div class="code">
+				&lt;div id="demo2"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;This is TextColor&lt;/h1&gt;<br>
+				&lt;/div&gt;
+			</div>
+			<h4>JavaScript</h4>
+			<div class="code">
+				TextColor.listen({seletor:"#demo2",splitter:"word",attr:true});
+			</div>
+			<h4>Result</h4>
+			<div class="code">
+				<h1 id="demo2">This is TextColor</h1>
+			</div>
+
+			<h3>3、划分句子(以&lt;br&gt;结束的句子)</h3>
+			<h4>HTML</h4>
+			<div class="code">
+				&lt;div id="demo3"&gt;<br>
+    			&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                This is an amazing&lt;br&gt;<br>
+    			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Revolution in Typography.&lt;br&gt;<br>
+    			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                The possibilities are endless:&lt;br&gt;<br>
+    			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Coloring, Vertical spacing, and Kerning.&lt;br&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;
+<br>&lt;/div&gt;
+			</div>
+			<h4>JavaScript</h4>
+			<div class="code">
+				TextColor.listen({seletor:'#demo3',splitter:"line"});
+			</div>
+			<h4>Result</h4>            
+			<div class="code">
+				<div id="demo3">
+					
+						This is an amazing<br />
+						Revolution in Typography.<br />
+						The possibilities are endless:<br>
+						Coloring, Vertical spacing, and Kerning.<br>
+				</div>
+			</div>
+            <h3>4、class类调用</h3>
+			<h4>HTML</h4>
+			<div class="code">
+				&lt;div class="demo4"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;This is TextColor&lt;/h1&gt;<br>
+				&lt;/div&gt;<br>
+                &lt;div class="demo4"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;中文文字&lt;/h1&gt;<br>
+				&lt;/div&gt;
+			</div>
+			<h4>JavaScript</h4>
+			<div class="code">
+				TextColor.listen({seletor:".demo4"});
+			</div>
+			<h4>Result</h4>            
+			<div class="code">
+				<h1 class="demo4">                
+                	<p>This is TextColor</p>                
+                </h1>
+                <h1 class="demo4">                
+                	<p>中文文字</p>                
+                </h1>
+			</div>
+            
+		</article>
+	</div>
+	<script src="TextColor.js"></script>
+	<script>
+	TextColor.listen({seletor:"#demo1"});
+	TextColor.listen({seletor:"#demo2",splitter:"word",attr:true});
+	TextColor.listen({seletor:'#demo3',splitter:"line"});
+	TextColor.listen({seletor:".demo4"});
+	</script>
+</body>
+</html>
